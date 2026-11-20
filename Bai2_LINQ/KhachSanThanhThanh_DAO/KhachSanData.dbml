@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KhachSanThanhThanh" Class="KhachSanDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=KhachSanThanhThanh;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="KhachSanThanhThanh_DAO.Properties.Settings" SettingsPropertyName="KhachSanThanhThanhConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.BangGia" Member="BangGias">
+    <Type Name="BangGia">
+      <Column Name="MaMuc" Type="System.String" DbType="VarChar(20) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenMuc" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="DonGia" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Association Name="BangGia_HoaDonTraPhong" Member="HoaDonTraPhongs" ThisKey="MaMuc" OtherKey="MaLoaiPhong" Type="HoaDonTraPhong" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HoaDonTraPhong" Member="HoaDonTraPhongs">
+    <Type Name="HoaDonTraPhong">
+      <Column Name="MaThanhToan" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="HoTen" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="DiaChi" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="SoNgayO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="MaLoaiPhong" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="CoTivi" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CoInternet" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CoMayNuocNong" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CoKaraoke" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CoAnSang" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="ThanhTien" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="NgayThanhToan" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DaTongKet" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="BangGia_HoaDonTraPhong" Member="BangGia" ThisKey="MaLoaiPhong" OtherKey="MaMuc" Type="BangGia" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.usp_LayBangGia" Method="usp_LayBangGia">
+    <ElementType Name="usp_LayBangGiaResult">
+      <Column Name="MaMuc" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="TenMuc" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="DonGia" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_LuuThanhToan" Method="usp_LuuThanhToan">
+    <Parameter Name="HoTen" Parameter="hoTen" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="DiaChi" Parameter="diaChi" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="SoNgayO" Parameter="soNgayO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MaLoaiPhong" Parameter="maLoaiPhong" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="CoTivi" Parameter="coTivi" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="CoInternet" Parameter="coInternet" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="CoMayNuocNong" Parameter="coMayNuocNong" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="CoKaraoke" Parameter="coKaraoke" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="CoAnSang" Parameter="coAnSang" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="ThanhTien" Parameter="thanhTien" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <ElementType Name="usp_LuuThanhToanResult">
+      <Column Name="MaThanhToan" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_TongKet" Method="usp_TongKet">
+    <ElementType Name="usp_TongKetResult">
+      <Column Name="TongLuot" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

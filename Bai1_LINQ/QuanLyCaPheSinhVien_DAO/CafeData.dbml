@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QuanLyCafeSinhVien" Class="CafeDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=QuanLyCafeSinhVien;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="QuanLyCaPheSinhVien_DAO.Properties.Settings" SettingsPropertyName="QuanLyCafeSinhVienConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ChiTietHoaDon" Member="ChiTietHoaDons">
+    <Type Name="ChiTietHoaDon">
+      <Column Name="MaHoaDon" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MaMon" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DonGia" Type="System.Decimal" DbType="Decimal(12,0) NOT NULL" CanBeNull="false" />
+      <Association Name="HoaDon_ChiTietHoaDon" Member="HoaDon" ThisKey="MaHoaDon" OtherKey="MaHoaDon" Type="HoaDon" IsForeignKey="true" />
+      <Association Name="ThucDon_ChiTietHoaDon" Member="ThucDon" ThisKey="MaMon" OtherKey="MaMon" Type="ThucDon" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HoaDon" Member="HoaDons">
+    <Type Name="HoaDon">
+      <Column Name="MaHoaDon" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenKhachHang" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SoKhach" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="LaSinhVien" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NgayThanhToan" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(12,0) NOT NULL" CanBeNull="false" />
+      <Association Name="HoaDon_ChiTietHoaDon" Member="ChiTietHoaDons" ThisKey="MaHoaDon" OtherKey="MaHoaDon" Type="ChiTietHoaDon" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ThucDon" Member="ThucDons">
+    <Type Name="ThucDon">
+      <Column Name="MaMon" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TenMon" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="LoaiMon" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DonGia" Type="System.Decimal" DbType="Decimal(12,0) NOT NULL" CanBeNull="false" />
+      <Association Name="ThucDon_ChiTietHoaDon" Member="ChiTietHoaDons" ThisKey="MaMon" OtherKey="MaMon" Type="ChiTietHoaDon" />
+    </Type>
+  </Table>
+  <Function Name="dbo.sp_ThemHoaDon" Method="sp_ThemHoaDon">
+    <Parameter Name="TenKhachHang" Parameter="tenKhachHang" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="SoKhach" Parameter="soKhach" Type="System.Int32" DbType="Int" />
+    <Parameter Name="LaSinhVien" Parameter="laSinhVien" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="TongTien" Parameter="tongTien" Type="System.Decimal" DbType="Decimal(12,0)" />
+    <ElementType Name="sp_ThemHoaDonResult">
+      <Column Name="MaHoaDon" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_ThemChiTietHoaDon" Method="sp_ThemChiTietHoaDon">
+    <Parameter Name="MaHoaDon" Parameter="maHoaDon" Type="System.Int32" DbType="Int" />
+    <Parameter Name="MaMon" Parameter="maMon" Type="System.Int32" DbType="Int" />
+    <Parameter Name="SoLuong" Parameter="soLuong" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DonGia" Parameter="donGia" Type="System.Decimal" DbType="Decimal(12,0)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_LayDanhSachThucDon" Method="sp_LayDanhSachThucDon">
+    <ElementType Name="sp_LayDanhSachThucDonResult">
+      <Column Name="MaMon" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TenMon" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="LoaiMon" Type="System.String" DbType="NVarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="DonGia" Type="System.Decimal" DbType="Decimal(12,0) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

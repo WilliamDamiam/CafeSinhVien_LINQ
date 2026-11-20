@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../KhachSanThanhThanh_BUS/KhachSanThanhThanh_BUS.csproj" Id="70341360-5637-481c-b6ae-3c97f9e92a5a" />
+  <Project Path="../KhachSanThanhThanh_DAO/KhachSanThanhThanh_DAO.csproj" Id="0e846b24-b56c-4ede-af44-37504b71e423" />
+  <Project Path="../KhachSanThanhThanh_DTO/KhachSanThanhThanh_DTO.csproj" Id="74dc23a1-fe35-4ff9-b4e4-e99c9df861e1" />
+  <Project Path="../QuanLyKhachSan/KhachSanThanhThanh_GUI.csproj" Id="200c4c5c-5527-4ce8-8544-8c9d0e37419c" />
+</Solution>

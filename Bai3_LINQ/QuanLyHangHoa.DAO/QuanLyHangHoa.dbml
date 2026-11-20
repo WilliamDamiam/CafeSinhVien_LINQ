@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="QLHangHoa_Bai3" Class="QuanLyHangHoaDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\SQLEXPRESS;Initial Catalog=QLHangHoa_Bai3;Integrated Security=True;Trust Server Certificate=True" SettingsObjectName="QuanLyHangHoa.DAO.Properties.Settings" SettingsPropertyName="QLHangHoa_Bai3ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.DMChatLieu" Member="DMChatLieus">
+    <Type Name="DMChatLieu">
+      <Column Name="MaChatLieu" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenChatLieu" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Association Name="DMChatLieu_DMHang" Member="DMHangs" ThisKey="MaChatLieu" OtherKey="MaChatLieu" Type="DMHang" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DMHang" Member="DMHangs">
+    <Type Name="DMHang">
+      <Column Name="MaHang" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TenHang" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="MaChatLieu" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DonGiaNhap" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DonGiaBan" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Association Name="DMChatLieu_DMHang" Member="DMChatLieu" ThisKey="MaChatLieu" OtherKey="MaChatLieu" Type="DMChatLieu" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.usp_LayChatLieu" Method="usp_LayChatLieu">
+    <ElementType Name="usp_LayChatLieuResult">
+      <Column Name="MaChatLieu" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="TenChatLieu" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_LayHangHoa" Method="usp_LayHangHoa">
+    <ElementType Name="usp_LayHangHoaResult">
+      <Column Name="MaHang" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="TenHang" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="MaChatLieu" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="TenChatLieu" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DonGiaNhap" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DonGiaBan" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_SuaHangHoa" Method="usp_SuaHangHoa">
+    <Parameter Name="MaHang" Parameter="maHang" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="TenHang" Parameter="tenHang" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="MaChatLieu" Parameter="maChatLieu" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="SoLuong" Parameter="soLuong" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DonGiaNhap" Parameter="donGiaNhap" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Parameter Name="DonGiaBan" Parameter="donGiaBan" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Parameter Name="Hinh" Parameter="hinh" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="GhiChu" Parameter="ghiChu" Type="System.String" DbType="NVarChar(500)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_ThemHangHoa" Method="usp_ThemHangHoa">
+    <Parameter Name="MaHang" Parameter="maHang" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="TenHang" Parameter="tenHang" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="MaChatLieu" Parameter="maChatLieu" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="SoLuong" Parameter="soLuong" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DonGiaNhap" Parameter="donGiaNhap" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Parameter Name="DonGiaBan" Parameter="donGiaBan" Type="System.Decimal" DbType="Decimal(18,2)" />
+    <Parameter Name="Hinh" Parameter="hinh" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="GhiChu" Parameter="ghiChu" Type="System.String" DbType="NVarChar(500)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_TimHangHoa" Method="usp_TimHangHoa">
+    <Parameter Name="MaHang" Parameter="maHang" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="TenHang" Parameter="tenHang" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="MaChatLieu" Parameter="maChatLieu" Type="System.String" DbType="NVarChar(10)" />
+    <ElementType Name="usp_TimHangHoaResult">
+      <Column Name="MaHang" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="TenHang" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="MaChatLieu" Type="System.String" DbType="NVarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="TenChatLieu" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="SoLuong" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DonGiaNhap" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DonGiaBan" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Hinh" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="GhiChu" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_XoaHangHoa" Method="usp_XoaHangHoa">
+    <Parameter Name="MaHang" Parameter="maHang" Type="System.String" DbType="NVarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

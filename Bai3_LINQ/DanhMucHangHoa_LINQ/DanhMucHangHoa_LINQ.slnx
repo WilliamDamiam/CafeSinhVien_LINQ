@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../QuanLyHangHoa.BUS/QuanLyHangHoa.BUS.csproj" Id="689d62a1-5abc-440d-87f6-49b29ac2cfaf" />
+  <Project Path="../QuanLyHangHoa.DAO/QuanLyHangHoa.DAO.csproj" Id="f980d169-2c63-45fc-b981-592e57cffbca" />
+  <Project Path="../QuanLyHangHoa.DTO/QuanLyHangHoa.DTO.csproj" Id="e138b2cd-79c9-4043-98b2-04df7acc53a6" />
+  <Project Path="../QuanLyHangHoa/QuanLyHangHoa.csproj" Id="a2fb70c9-feeb-4401-a9bc-f8dc19a89f9b" />
+</Solution>
